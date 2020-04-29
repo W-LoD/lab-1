@@ -27,8 +27,8 @@ inline void Output(TreeElement* el);
 inline void Detach(TreeElement* root, TreeElement* el);
 inline void Remove(TreeElement* el);
 inline TreeElement* Find(TreeElement* el, int v);
-void Tree_to_List(List*& first, TreeElement* el, List*& f);
-void OutputList(List* f);
+inline void Tree_to_List(List*& first, TreeElement* el, List*& f);
+inline void OutputList(List* f);
 
 int main()
 {
@@ -116,7 +116,7 @@ inline TreeElement* Find(TreeElement* el, int v)
 	}
 	return result;
 }
-void Tree_to_List(List*& first, TreeElement* el, List*& f)
+inline void Tree_to_List(List*& first, TreeElement* el, List*& f)
 {
 	if (el)
 	{
@@ -137,7 +137,7 @@ void Tree_to_List(List*& first, TreeElement* el, List*& f)
 	}
 }
 
-void OutputList(List* f) {
+inline void OutputList(List* f) {
 	while (f != NULL) {
 		cout << f->value << " ";
 		f = f->next;
