@@ -1,37 +1,41 @@
-﻿#include <math.h> 
-#include<iostream> 
+﻿#include<iostream> 
 using namespace std;
-float F1(float x)
+void F1(double* mas, int N)
 {
-	float result = 0;
-	if (x >= 0)
+	int a;
+	double c;
+	int* mas1 = new int[N];
+	double* mas2 = new double[N];
+	for (int i = 0; i < N; i++)
 	{
-		result = 5 * x + 7;
+		c = mas[i];
+		a = (int)mas[i];
+		c = c - a;
+		mas1[i] = a;
+		mas2[i] = c;
 	}
-	else
-	{
-		result = 1 / x;
+	for (int i = 0; i < N; i++) {
+		cout << "Целая часть:" << mas1[i] << endl;
 	}
-	return result;
+	for (int i = 0; i < N; i++) {
+		cout << "Дробная часть:" << mas2[i] << endl;
+	}
 }
-void F2(float& x)
-{
-	x = F1(x);
-}
+
 int main()
 {
-	for (float i = -5; i < 3; i++)
+	int N;
+	setlocale(LC_ALL, "rus");
+	cout << "Введите количество элементов массива:" << endl;
+	cin >> N;
+	double* mas = new double[N];
+	cout << "Введите элементы массива" << endl;
+	for (int i = 0; i < N; i++)
 	{
-		float f = F1(i);
-		cout « "i=" « i « ";F1(i)=" « f « endl;
+		cin >> mas[i];
 	}
-	cout « endl;
-	for (float i = -5; i < 3; i++)
-	{
-		cout « "i=" « i « ",";
-		F2(i);
-		cout « "F2=" « i «endl;
-	}
+	F1(mas, N);
+	delete[] mas;
 	system("pause");
 	return 0;
 }
