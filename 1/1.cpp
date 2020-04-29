@@ -1,37 +1,86 @@
-﻿#include <math.h> 
-#include<iostream> 
+﻿#include<iostream> 
 using namespace std;
-float F1(float x)
+
+struct list
 {
-	float result = 0;
-	if (x >= 0)
+	float value;
+	list* next;
+	list()
 	{
-		result = 5 * x + 7;
+		value = 0;
+		next = NULL;
 	}
-	else
-	{
-		result = 1 / x;
-	}
-	return result;
-}
-void F2(float& x)
-{
-	x = F1(x);
-}
+};
+void F1(list* p, int i, int n);
+void F2(list* p, int i, int n);
 int main()
 {
-	for (float i = -5; i < 3; i++)
+	int n;
+	float z;
+	setlocale(LC_ALL, "rus");
+	cout << "Введите количество элементов списка: " << endl;
+	cin >> n;
+	cout << "Введите элементы списка: " << endl;
+	list* first = new list();
+	list* p = first;
+	int i = 0;
+	while (i < n)
 	{
-		float f = F1(i);
-		cout « "i=" « i « ";F1(i)=" « f « endl;
+		cin >> z;
+		p->value = z;
+		//cout<<first->value<<endl;
+		if (i != n)
+		{
+			p->next = new list();
+			p = p->next;
+		}
+		i++;
 	}
-	cout « endl;
-	for (float i = -5; i < 3; i++)
-	{
-		cout « "i=" « i « ",";
-		F2(i);
-		cout « "F2=" « i «endl;
-	}
+	i = 0;
+	F1(first, i, n);
+	i = 0;
+	F2(first, i, n);
 	system("pause");
 	return 0;
+}
+void F1(list* p, int i, int n)
+{
+	list* do_z = new list();
+	int b;
+	float c;
+	while (i < n)
+	{
+		b = (int)p->value;
+		c = p->value;
+		c -= b;
+		do_z->value = b;
+		cout << do_z->value << endl;
+		p = p->next;
+		if (i != n - 1)
+		{
+			do_z->next = new list();
+			do_z = do_z->next;
+		}
+		i++;
+	}
+}
+void F2(list* p, int i, int n) {
+	list* po_z = new list();
+	int b;
+	float c;
+	while (i < n)
+	{
+		b = (int)p->value;
+		c = p->value;
+		c -= b;
+		po_z->value = c;
+		cout << po_z->value << endl;
+		p = p->next;
+		if (i != n - 1)
+		{
+			po_z->next = new list();
+			po_z = po_z->next;
+		}
+		i++;
+	}
 }
